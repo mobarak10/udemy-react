@@ -1,29 +1,37 @@
 import React from "react";
 import "./App.css";
-import Person from "./Person/Person";
+import UserInput from "./UserInput/UserInput";
+import UserOutput from "./UserOutput/UserOutput";
 
 class App extends React.Component {
     state = {
-        person: [
-            { name: "Joy", age: 24 },
-            { name: "Mobarak", age: 25 },
-            { name: "Shibbir", age: 24 },
-        ]
+        username: "joy khan"
+    };
+
+    changeNameHandler = (event) => {
+        this.setState({
+            username: event.target.value
+        })
     }
-    render (){
+    render () {
         return (
             <div className="App">
-                <h1>Hi I am React App</h1>
-                <p>This is really working</p>
-                <Person name={this.state.person[0].name} age={this.state.person[0].age} />
-                <Person name={this.state.person[1].name} age={this.state.person[1].age}>
-                    My hobbie: Reading Book
-                </Person>
-                <Person name={this.state.person[2].name} age={this.state.person[2].age} />
+                <ol>
+                    <li>link 1</li>
+                    <li>link 2</li>
+                    <li>link 3</li>
+                    <li>link 4</li>
+                    <li>link 5</li>
+                    <li>link 6</li>
+                </ol>
+
+                <UserInput changed={this.changeNameHandler} defaultValue={this.state.username} />
+                <UserOutput userName={this.state.username} />
+                <UserOutput userName={this.state.username} />
+                <UserOutput userName={this.state.username} />
             </div>
-        );
+        )
     }
-    // return React.createElement("div", {className: 'App'}, React.createElement ("h1", null, "Hi i'm a react app"));
 }
 
 export default App;
